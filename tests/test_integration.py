@@ -1,10 +1,8 @@
 
-from app import app, db
-import app 
-import Parser
+from app import Expression
 import unittest 
 
-class IntegrationTest(unittest.TestCase):
+class TestIntegration(unittest.TestCase):
 	
 	def setUp(self):
 		self.app = app.test_client()
@@ -20,5 +18,5 @@ class IntegrationTest(unittest.TestCase):
 		self.app.post('/add', data = data['expression'])
 		self.assertEqual(Expression.query.filter_by(text=data['expression']), None)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	unittest.main()
