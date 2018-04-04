@@ -13,12 +13,12 @@ class IntegrationTest(unittest.TestCase):
 	def test_correct(self): 
 		data = {'expression': '3+3'}
 		self.app.post('/add', data = data['expression'])
-		self.assertEqual(Expression.query.filter_by(text=expression), data['expression'])
+		self.assertEqual(Expression.query.filter_by(text=data['expression']), data['expression'])
 
 	def test_false(self): 
 		data = {'expression': '12//3'}
 		self.app.post('/add', data = data['expression'])
-		self.assertEqual(Expression.query.filter_by(text=expression), None)
+		self.assertEqual(Expression.query.filter_by(text=data['expression']), None)
 
 if __name__ == "__main__":
 	unittest.main()
